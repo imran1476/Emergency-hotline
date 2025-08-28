@@ -12,46 +12,46 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
- 
-    <nav>
-      <div class="grid grid-cols-1 md:grid-cols-2 items-center px-6 py-4 bg-white">
-    <!-- Left Side -->
-    <div class="flex items-center gap-3 justify-center md:justify-start mb-4 md:mb-0">
-        <img src="images/logo.png" alt="" class="w-14 h-14">
-        <h1 class="text-[#006747] text-2xl font-extrabold leading-tight">
+ <nav>
+  <!-- Top Navbar -->
+  <div class="flex flex-col md:flex-row items-center justify-between px-4 py-4 bg-white">
+    <!-- Left Side: -->
+    <div class="flex flex-col md:flex-row items-center gap-3 mb-4 md:mb-0">
+        <img src="images/logo.png" alt="Logo" class="w-14 h-14">
+        <h1 class="text-[#006747] text-2xl font-extrabold leading-tight text-center md:text-left">
             Emergency <br> Service
         </h1>
     </div>
 
-    <!-- Right Side -->
-    <div class="flex flex-wrap items-center justify-center md:justify-end gap-4">
+    <!-- Right Side-->
+    <div class="flex flex-wrap justify-center md:justify-end gap-4">
         <!-- Heart -->
         <div class="flex items-center justify-center gap-2 h-10 min-w-[80px] font-bold text-xl rounded-xl px-4 bg-[#41ff6b1a]">
             <p><span id="heartCount">0</span></p>
-            <img src="images/heart.png" alt="" class="w-5 h-5">
+            <img src="images/heart.png" alt="Heart" class="w-5 h-5">
         </div>
 
         <!-- Coin -->
         <div class="flex items-center justify-center gap-2 h-10 min-w-[80px] font-bold text-xl rounded-xl px-4 bg-[#41ff6b1a]">
             <p><span id="coinCount">100</span></p>
-            <img src="images/coin.png" alt="" class="w-5 h-5">
+            <img src="images/coin.png" alt="Coin" class="w-5 h-5">
         </div>
 
         <!-- Copy Button -->
-        <div class="flex items-center justify-center gap-2 h-10 min-w-[100px] text-white rounded-xl px-5 bg-[#00a63e]">
+        <div class="flex items-center justify-center gap-2 h-10 min-w-[100px] text-white rounded-xl px-5 bg-[#00a63e] whitespace-nowrap">
             <p><span id="copyCount">0</span> Copy</p>
         </div>
     </div>
-</div>
+  </div>
 
-       <!-- navbar--2 -->
+  <!-- Bottom Navbar / Banner -->
+  <div class="min-h-[230px] space-y-4 p-6 text-center bg-gradient-to-r from-[#013122] via-[#006747] to-[#013223]">
+     <img src="images/logo-dark.png" alt="Logo Dark" class="mx-auto w-24 h-24 md:w-30 md:h-30">
+     <h1 class="text-white text-3xl md:text-4xl font-bold">Emergency Service Directory</h1>
+     <p class="text-white text-lg md:text-xl">Government Emergency Services at Your Fingertip – A Project by Government of the People’s Republic of Bangladesh</p>
+  </div>
+</nav>
 
-       <div class="min-h-[230px] space-y-4 p-6 mx-auto text-center bg-gradient-to-r from-[#013122] via-[#006747] to-[#013223]">
-     <img src="images/logo-dark.png" alt="" class="mx-auto w-30 h-30">
-     <h1 class="text-white text-4xl font-bold">Emergency Service Directory</h1>
-     <p class="text-white text-xl">Government Emergency Services at Your Fingertip – A Project by Government of the People’s Republic of Bangladesh</p>
-       </div>
-    </nav>
 
    <!-- Main Section -->
      <main class="grid grid-cols-1 md:grid-cols-3 gap-10 p-6 bg-[#f5fff6]">
@@ -248,8 +248,6 @@
 
       <!-- card-9 -->
 
-
-      
       <div class="bg-white rounded-2xl p-6 shadow-lg">
         <div class="flex justify-between items-center">
           <div class="w-12 h-12 bg-[#FFE3E2] rounded-xl"> <img src="images/Bangladesh-Railway.png" alt="" class="w-8 h-8 mt-2 mx-auto "></div>
@@ -273,18 +271,28 @@
       
     </section>
 
-      <!-- History Section -->
-    <section class="bg-white p-4 rounded-2xl shadow-md">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="font-semibold text-lg flex items-center gap-2"><i class="fa-regular fa-clock"></i> Call History</h3>
-        <button id="clearHistory" class="bg-green-600  text-white px-4 py-1 rounded-xl hover:bg-green-700 cursor-pointer">Clear</button>
-      </div>
-      <ul id="historyList" class="space-y-2 text-sm text-gray-700"></ul>
-    </section>
+    <!-- History Section -->
+<section class="bg-white p-4 rounded-2xl shadow-md">
+  <div class="flex justify-between items-center mb-4">
+    <h3 class="font-semibold text-lg flex items-center gap-2">
+      <i class="fa-regular fa-clock"></i>Call History
+    </h3>
+    <button id="clearHistory" class="bg-green-600 text-white px-4 py-1 rounded-xl hover:bg-green-700 cursor-pointer">
+      Clear
+    </button>
+  </div>
+
+  <div>
+    <ul id="historyList" class="space-y-3 text-sm text-gray-700">
+   
+    </ul>
+  </div>
+</section>
+
     </main>
 
 
-    <!-- for javascript -->
+    <!-- For javascript link -->
 
     <script src="javascript/index.js"></script>
 </body>

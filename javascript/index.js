@@ -1,56 +1,84 @@
-// console.log("imran nazir")
-let heartCount = 0;
-    let coinCount = 100;
-    let copyCount = 0;
+//  Functions .............
+function getInputValueNumber(id){
+    const inputField = parseInt(document.getElementById(id).value);
+    return inputField;
+}
 
-    const heartCountEl = document.getElementById("heartCount");
-    const coinCountEl = document.getElementById("coinCount");
-    const copyCountEl = document.getElementById("copyCount");
-    const historyList = document.getElementById("historyList");
+function getInputValue(id){
+    const inputField = document.getElementById(id).value;
+    return inputField;
+}
 
-    // Heart button
-    document.querySelectorAll(".heartBtn").forEach(btn => {
-      btn.addEventListener("click", () => {
+function getInnerText(id){
+    const element = parseInt(document.getElementById(id).innerText);
+    return element;
+}
+
+function setInnerText(id, value){
+    document.getElementById(id).innerText = value;
+}
+
+//  Variables ..........
+let heartCount = getInnerText("heartCount"); 
+let coinCount = getInnerText("coinCount");
+let copyCount = getInnerText("copyCount");
+
+// Heart Button ........
+document.querySelectorAll(".heartBtn").forEach(function(btn){
+    btn.addEventListener("click", function(e){
+        e.preventDefault();
         heartCount++;
-        heartCountEl.textContent = heartCount;
-      });
+        setInnerText("heartCount", heartCount);
     });
+});
 
-    // Copy button
-    document.querySelectorAll(".copyBtn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const number = e.target.closest("div").previousElementSibling.textContent;
-        navigator.clipboard.writeText(number);
+
+// Copy Button ..........
+document.querySelectorAll(".copyBtn").forEach(function(btn){
+    btn.addEventListener("click", function(e){
+        e.preventDefault();
         copyCount++;
-        copyCountEl.textContent = copyCount;
-        alert(`Hotline ${number} copied! Total Copies: ${copyCount}`);
-      });
+        setInnerText("copyCount", copyCount);
+        alert("Number Copied!");
     });
+});
 
-    // Call button
-    document.querySelectorAll(".callBtn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const card = e.target.closest(".bg-white");
-        const serviceName = card.querySelector("h3").textContent;
-        const serviceNumber = card.querySelector("p.font-bold").textContent;
+//  Call Button ...........
+document.querySelectorAll(".callBtn").forEach(function(btn){
+    btn.addEventListener("click", function(e){
+        e.preventDefault();
 
-        if (coinCount < 20) {
-          alert("Not enough coins to make a call!");
-          return;
+        if(coinCount < 20){
+            alert("Insufficient coins! You need 20 coins to make a call.");
+            return;
         }
 
-        coinCount -= 20;
-        coinCountEl.textContent = coinCount;
+        // call service name and number..........
+        const card = btn.closest(".bg-white");
+        const serviceName = card.querySelector("h3").innerText;
+        const serviceNumber = card.querySelector("p.font-bold").innerText;
 
-        const now = new Date().toLocaleTimeString();
-        alert(`Calling ${serviceName} (${serviceNumber})`);
-        const li = document.createElement("li");
-        li.textContent = `${serviceName} - ${serviceNumber} (at ${now})`;
-        historyList.appendChild(li);
-      });
-    });
+        // Alert name + number.........
+        const confirmCall = confirm("Do you want to call " + serviceName + " (" + serviceNumber + ")?");
 
-    // Clear history
-    document.getElementById("clearHistory").addEventListener("click", () => {
-      historyList.innerHTML = "";
+        if(confirmCall){
+            coinCount -= 20;
+            setInnerText("coinCount", coinCount);
+
+            const now = new Date().toLocaleTimeString();
+            const li = document.createElement("li");
+            li.className = "bg-gray-100 p-3 rounded-xl shadow-sm hover:shadow-md transition";
+            li.textContent = "Call to " + serviceName + " (" + serviceNumber + ") at " + now;
+            document.getElementById("historyList").appendChild(li);
+        } else {
+            alert("Call cancelled");
+        }
     });
+});
+
+
+// Clear History Button ............
+document.getElementById("clearHistory").addEventListener("click", function(e){
+    e.preventDefault();
+    document.getElementById("historyList").innerHTML = "";
+});
