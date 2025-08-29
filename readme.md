@@ -41,6 +41,7 @@ Event Delegation হলো যখন আপনি parent element-এর উপ�
 ---
 
 ### 5. What is the difference between preventDefault() and stopPropagation() methods?
+
 ## Answer:
 -preventDefault() → ডিফল্ট কাজ থামায়। উদাহরণ: কোনো লিঙ্কে ক্লিক করলে অন্য পেজে যাবে না।
 
